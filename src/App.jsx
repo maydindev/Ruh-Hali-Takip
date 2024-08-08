@@ -1,8 +1,8 @@
-import { useState } from 'react'
-import diaryData from './diaryData'
-import DiaryCard from './components/DiaryCard'
-import Menu from './components/Menu'
-import './styles.css'
+import { useState } from "react";
+import diaryData from "./diaryData";
+import DiaryCard from "./components/DiaryCard";
+import Menu from "./components/Menu";
+import "./styles.css";
 export default function App() {
   /* Challenge 
 
@@ -20,12 +20,30 @@ export default function App() {
   return (
     <div>
       <Menu skip={false} />
-      <main className='main-container'>
-        <div className='sub-header'>
+      <main className="main-container">
+        <div className="sub-header">
           <h3>Nisan Raporu</h3>
         </div>
 
-        <DiaryCard
+        {diaryData.map((data) => {
+          return (
+            <DiaryCard
+              key={data.id}
+              date={data.date}
+              rating={data.rating}
+              emotions={data.emotions}
+              activities={data.activities}
+              note={data.note}
+            />
+          );
+        })}
+      </main>
+    </div>
+  );
+}
+
+/*
+<DiaryCard
           key='bu geçici bir anahtar'
           date='1 Nisan'
           rating={77}
@@ -64,7 +82,4 @@ export default function App() {
           ]}
           note={`Son üç aydır üzerinde çalıştığım büyük iş projemi nihayet bitirdim ve ekibimin bir üyesi olarak kendimi geliştirdiğimi hissediyorum.`}
         />
-      </main>
-    </div>
-  )
-}
+        */
